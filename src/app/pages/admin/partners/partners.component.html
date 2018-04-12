@@ -1,0 +1,85 @@
+
+<div class="example-container mat-elevation-z8 section">
+    <mat-table #table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="mail">
+            <mat-header-cell *matHeaderCellDef> Mail</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.mail}}</mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="userName">
+            <mat-header-cell *matHeaderCellDef> User Name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.userName}}</mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef> Phone</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.phone}}</mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="companyName">
+            <mat-header-cell *matHeaderCellDef> Company name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.companyName}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="countryId">
+            <mat-header-cell *matHeaderCellDef> Country</mat-header-cell>
+            <mat-cell *matCellDef="">USA</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="state">
+            <mat-header-cell *matHeaderCellDef> State</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.state}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+            <mat-header-cell *matHeaderCellDef> City</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.city}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef> Address</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.address}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="zipCode">
+            <mat-header-cell *matHeaderCellDef> Zip cody</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.zipCode}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="fax">
+            <mat-header-cell *matHeaderCellDef> Fax</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.fax}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="isActive">
+            <mat-header-cell *matHeaderCellDef>Active</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <i   *ngIf="element.isActive === true || element.isActive == '1'" class="material-icons green margin-left-20">done</i>
+                <i *ngIf="element.isActive === false || element.isActive == '0'" color="warn" class="material-icons warn margin-left-20">highlight_off</i></mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="incomePercent">
+            <mat-header-cell *matHeaderCellDef> Income Percent</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.incomePercent}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="debit">
+            <mat-header-cell *matHeaderCellDef> Debit</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.debit}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>
+                <div class="button-row">
+                    <button mat-raised-button color="warn" class="font-size-12" (click)="addPartner()">
+                        Add Partner
+                    </button>
+                </div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <div (click)="edit(element)" class="edit margin-left-40"><i class="material-icons">border_color</i></div>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

@@ -1,0 +1,38 @@
+
+.logo{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    color: blueviolet;
+    font-size: 20px;
+}
+.logo i {
+    font-size: 30px;
+}
+.logo p {
+    margin: 3px;
+}
+.login-container {
+    margin: 20px auto;
+    width: 400px;
+    padding: 15px;
+    box-shadow: 2px 3px 12px  black;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+img {
+    height: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.actions {
+    justify-content: space-between;
+    display: flex;
+    margin-top: 20px;
+}
+

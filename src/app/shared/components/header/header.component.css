@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    height: 50px;
+    box-shadow: 3px 2px 15px 1px black ;
+}
+.logOut {
+    color: red;
+}
+p , i {
+    color: red;
+}
+.group {
+    font-size: 30px;
+}
+.example-icon {
+    padding: 0 14px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
