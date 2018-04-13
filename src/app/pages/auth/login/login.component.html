@@ -1,26 +1,28 @@
 <div class="login-container">
     <div class="logo dib">
-      <i class="material-icons">group</i>
-      <p>BDPM Admin</p>
+        <i class="material-icons">group</i>
+        <p>BDPM Admin</p>
     </div>
-  <!-- <form #user="ngForm" name="user" (ngSubmit)="logIn(user.value)"> -->
-  <mat-form-field>
-    <input matInput placeholder="User Name"  [(ngModel)]="user.userName"  name="userName" required>
-    <mat-error *ngIf="user.userName === ''">
-      Username is required
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Password" [(ngModel)]="user.password" name="password" type="password" required>
-    <mat-error *ngIf="user.password === ''">
-      Password is required
-    </mat-error>
-  </mat-form-field>
-  <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
-  <!-- </form> -->
-  <div class="actions">
-    <button mat-raised-button type="submit" color="primary" (click)="logIn()">Login</button>
-    <mat-spinner *ngIf="loading" [strokeWidth]="4" [diameter]="40"></mat-spinner>
-    <button mat-button (click)="reset()">Reset</button>
-  </div>
+    <!-- <form #user="ngForm" name="user" (ngSubmit)="logIn(user.value)"> -->
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="User Name" [(ngModel)]="user.userName" name="userName" required>
+            <mat-error *ngIf="user.userName === ''">
+                Username is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Password" [(ngModel)]="user.password" name="password" type="password" required>
+            <mat-error *ngIf="user.password === ''">
+                Password is required
+            </mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+        <!-- </form> -->
+        <div class="actions">
+            <button mat-raised-button type="submit" color="primary" (click)="logIn()">Login</button>
+            <mat-spinner *ngIf="loading" [strokeWidth]="4" [diameter]="40"></mat-spinner>
+            <button mat-button (click)="reset()">Reset</button>
+        </div>
+    </form>
 </div>

@@ -102,4 +102,5 @@ export class EditPartnerComponent implements OnInit {
     onNoClick(): void {
         this.dialogRef.close();
     }
+
 }
