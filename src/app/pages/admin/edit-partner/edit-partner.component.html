@@ -1,104 +1,166 @@
-
-<div class="button-row text-right" >
-  <button mat-icon-button (click)="onNoClick() " color="warn"><i class="material-icons">close</i></button>
+<div class="button-row text-right">
+    <button mat-icon-button (click)="onNoClick() " color="warn"><i class="material-icons">close</i></button>
 </div>
 <div>
-  <mat-error>{{errorMessage}}</mat-error>
+    <mat-error>{{errorMessage}}</mat-error>
 </div>
 <div>
-  <mat-form-field class="example-form-field">
-    <input matInput type="email" placeholder="Email" [(ngModel)]="partner.mail" [formControl]="emailFormControl"
-           [errorStateMatcher]="matcher"/>
-    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-      Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="emailFormControl.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-    <button mat-button *ngIf="partner.mail" matSuffix mat-icon-button aria-label="Clear" (click)="partner.mail=''">
-      <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
+    <mat-form-field class="example-form-field">
+        <input matInput type="email" placeholder="Email" [(ngModel)]="partner.mail" [formControl]="emailFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="emailFormControl.hasError('pattern') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.mail" matSuffix mat-icon-button aria-label="Clear" (click)="partner.mail=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <input matInput type="text" placeholder="User name" [(ngModel)]="partner.userName"/>
-    <button mat-button *ngIf="partner.userName" matSuffix mat-icon-button aria-label="Clear" (click)="partner.userName=''">
-      <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
+    <mat-form-field class="example-form-field">
+        <input matInput type="text" placeholder="User name" [(ngModel)]="partner.userName"
+               [formControl]="userNameFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="userNameFormControl.hasError('pattern') && !userNameFormControl.hasError('required')">
+            Please enter a valid user name
+        </mat-error>
+        <mat-error *ngIf="userNameFormControl.hasError('required')">
+            User name is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.userName" matSuffix mat-icon-button aria-label="Clear"
+                (click)="partner.userName=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <input matInput type="text" placeholder="Phone" [(ngModel)]="partner.phone"/>
-    <button mat-button *ngIf="partner.phone" matSuffix mat-icon-button aria-label="Clear" (click)="partner.phone=''">
-     <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
+    <mat-form-field class="example-form-field">
+        <input matInput type="text" placeholder="Phone" [(ngModel)]="partner.phone" [formControl]="phoneFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="phoneFormControl.hasError('pattern') && !phoneFormControl.hasError('required')">
+            Please enter a valid phone number
+        </mat-error>
+        <mat-error *ngIf="phoneFormControl.hasError('required')">
+            Phone number is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.phone" matSuffix mat-icon-button aria-label="Clear"
+                (click)="partner.phone=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <input matInput type="text" placeholder="Company name" [(ngModel)]="partner.companyName"/>
-    <button mat-button *ngIf="partner.companyName" matSuffix mat-icon-button aria-label="Clear" (click)="partner.companyName=''">
-      <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
+    <mat-form-field class="example-form-field">
+        <input matInput type="text" placeholder="Company name" [(ngModel)]="partner.companyName"
+               [formControl]="companyNameFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="companyNameFormControl.hasError('required')">
+            Company name is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.companyName" matSuffix mat-icon-button aria-label="Clear"
+                (click)="partner.companyName=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <input matInput type="text" placeholder="State" [(ngModel)]="partner.state"/>
-    <button mat-button *ngIf="partner.state" matSuffix mat-icon-button aria-label="Clear" (click)="partner.state=''">
-      <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
+    <mat-form-field class="example-form-field">
+        <input matInput type="text" placeholder="State" [(ngModel)]="partner.state" [formControl]="stateFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="stateFormControl.hasError('pattern') && !stateFormControl.hasError('required')">
+            Please enter a valid State
+        </mat-error>
+        <mat-error *ngIf="stateFormControl.hasError('required')">
+            State is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.state" matSuffix mat-icon-button aria-label="Clear"
+                (click)="partner.state=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <input matInput type="text" placeholder="City" [(ngModel)]="partner.city"/>
-    <button mat-button *ngIf="partner.city" matSuffix mat-icon-button aria-label="Clear" (click)="partner.city=''">
-      <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
+    <mat-form-field class="example-form-field">
+        <input matInput type="text" placeholder="City" [(ngModel)]="partner.city" [formControl]="cityFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="cityFormControl.hasError('pattern') && !cityFormControl.hasError('required')">
+            Please enter a valid City
+        </mat-error>
+        <mat-error *ngIf="cityFormControl.hasError('required')">
+            City is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.city" matSuffix mat-icon-button aria-label="Clear" (click)="partner.city=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <input matInput type="text" placeholder="Address" [(ngModel)]="partner.address"/>
-    <button mat-button *ngIf="partner.address" matSuffix mat-icon-button aria-label="Clear" (click)="partner.address=''">
-      <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
+    <mat-form-field class="example-form-field">
+        <input matInput type="text" placeholder="Address" [(ngModel)]="partner.address"
+               [formControl]="addressFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="addressFormControl.hasError('required')">
+            Address is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.address" matSuffix mat-icon-button aria-label="Clear"
+                (click)="partner.address=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <input matInput type="text" placeholder="Zip code" [(ngModel)]="partner.zipCode"/>
-    <button mat-button *ngIf="partner.zipCode" matSuffix mat-icon-button aria-label="Clear" (click)="partner.zipCode=''">
-      <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
+    <mat-form-field class="example-form-field">
+        <input matInput type="text" placeholder="Zip code" [(ngModel)]="partner.zipCode"
+               [formControl]="zipCodeFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="zipCodeFormControl.hasError('required')">
+            Zip code is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.zipCode" matSuffix mat-icon-button aria-label="Clear"
+                (click)="partner.zipCode=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <input matInput type="text" placeholder="Fax" [(ngModel)]="partner.fax"/>
-    <button mat-button *ngIf="partner.fax" matSuffix mat-icon-button aria-label="Clear" (click)="partner.fax=''">
-      <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
+    <mat-form-field class="example-form-field">
+        <input matInput type="text" placeholder="Fax" [(ngModel)]="partner.fax" [formControl]="faxFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="faxFormControl.hasError('required')">
+            Fax is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.fax" matSuffix mat-icon-button aria-label="Clear" (click)="partner.fax=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
 
+    <mat-form-field class="example-form-field">
+        <input matInput type="number" placeholder="Income Percent" [(ngModel)]="partner.incomePercent"
+               [formControl]="incomePercentFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="incomePercentFormControl.hasError('required')">
+            Income percent is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.incomePercent" matSuffix mat-icon-button aria-label="Clear"
+                (click)="partner.incomePercent=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
 
-
-  <mat-form-field class="example-form-field">
-    <input matInput type="number" placeholder="Income Percent" [(ngModel)]="partner.incomePercent"/>
-    <button mat-button *ngIf="partner.incomePercent" matSuffix mat-icon-button aria-label="Clear" (click)="partner.incomePercent=''">
-      <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
-
-  <mat-form-field class="example-form-field">
-    <input matInput type="number" placeholder="Debit" [(ngModel)]="partner.debit"/>
-    <button mat-button *ngIf="partner.debit" matSuffix mat-icon-button aria-label="Clear" (click)="partner.debit=''">
-      <i class="material-icons">close</i>
-    </button>
-  </mat-form-field>
-
-  <mat-slide-toggle [(ngModel)]="partner.isActive" style="margin: 30px" color="warn">Active</mat-slide-toggle>
+    <mat-form-field class="example-form-field">
+        <input matInput type="number" placeholder="Debit" [(ngModel)]="partner.debit" [formControl]="debitFormControl"
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="debitFormControl.hasError('required')">
+            Debit is <strong>required</strong>
+        </mat-error>
+        <button mat-button *ngIf="partner.debit" matSuffix mat-icon-button aria-label="Clear"
+                (click)="partner.debit=''">
+            <i class="material-icons">close</i>
+        </button>
+    </mat-form-field>
+    <mat-slide-toggle [(ngModel)]="partner.isActive" style="margin: 30px" color="warn">Active</mat-slide-toggle>
 </div>
 
 <div>
 
-  <div class="button-row">
-    <button mat-button (click)="onNoClick() " style="width: 250px; margin: 20px 20px 0 10px">Close</button>
-    <button mat-raised-button color="warn" style="width: 250px; margin-top: 20px " (click)="saveEdit()">Save</button>
-  </div>
+    <div class="button-row">
+        <button mat-button (click)="onNoClick() " style="width: 250px; margin: 20px 20px 0 10px">Close</button>
+        <button mat-raised-button color="warn" style="width: 250px; margin-top: 20px " (click)="saveEdit()">Save
+        </button>
+    </div>
 </div>
