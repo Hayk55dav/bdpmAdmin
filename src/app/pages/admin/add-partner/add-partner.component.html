@@ -160,7 +160,7 @@
 
     <div class="button-row">
         <button mat-button (click)="onNoClick() " style="width: 250px; margin: 20px 20px 0 10px">Close</button>
-        <button mat-raised-button color="warn" style="width: 250px; margin-top: 20px " (click)="addPartner()">Add
+        <button mat-raised-button color="warn" style="width: 250px; margin-top: 20px " (click)="addPartner()" [disabled]="!disabled()">Add
             Partner
         </button>
     </div>

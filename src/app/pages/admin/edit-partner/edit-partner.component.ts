@@ -2,7 +2,7 @@ import {Component, OnInit, Inject} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {DataService} from '../data.service';
-import { Constants } from '../../../shared/constants';
+import {Constants} from '../../../shared/constants';
 
 
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
@@ -29,6 +29,8 @@ export class EditPartnerComponent implements OnInit {
     faxFormControl;
     incomePercentFormControl;
     debitFormControl;
+
+
     constructor(private errorStateMatcher: ErrorStateMatcher, private  dataService: DataService, public dialogRef: MatDialogRef<PartnersComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any) {
 
@@ -37,26 +39,26 @@ export class EditPartnerComponent implements OnInit {
     ngOnInit() {
         this.partner = this.data;
         console.log(this.partner);
-        if(this.partner.isActive === 0){
+        if (this.partner.isActive === 0) {
             this.active = false;
-        }else{
+        } else {
             this.active = true;
         }
         this.emailFormControl = new FormControl('', [
             Validators.required,
-            Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,5}))$/)
+            Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,5}))$/),
         ]);
         this.userNameFormControl = new FormControl('', [
             Validators.required,
-            Validators.pattern(/^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/)
+            Validators.pattern(/^[a-zA-Z0-9_-]{5,40}$/),
         ]);
         this.phoneFormControl = new FormControl('', [
             Validators.required,
-            Validators.pattern(/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/)
+            Validators.pattern(/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/),
         ]);
         this.companyNameFormControl = new FormControl('', [
             Validators.required,
-            ]);
+        ]);
         this.stateFormControl = new FormControl('', [
             Validators.required,
             Validators.pattern(/^[a-zA-Z\s]*$/),
@@ -81,26 +83,33 @@ export class EditPartnerComponent implements OnInit {
             Validators.required,
         ]);
         this.matcher = this.errorStateMatcher;
-        console.log(this.matcher);
     }
 
-    saveEdit(){
-        if(this.active){
+    saveEdit() {
+        if (this.active) {
             this.partner.isActive = 1;
-        }else {
+        } else {
             this.partner.isActive = 0;
         }
         this.dataService.postEditPartner(Constants.partnersAdmin.postEditPartner, this.partner)
             .subscribe(data => {
-                if(data.error){
+                if (data.error) {
                     this.errorMessage = data.error.localizedMessage;
-                }else{
+                } else {
                     this.dialogRef.close();
                 }
             });
     }
+
     onNoClick(): void {
         this.dialogRef.close();
     }
 
+    disabled() {
+        if (this.emailFormControl.errors === null && this.userNameFormControl.errors === null && this.phoneFormControl.errors === null && this.companyNameFormControl.errors === null && this.stateFormControl.errors === null && this.cityFormControl.errors === null && this.addressFormControl.errors === null && this.zipCodeFormControl.errors === null && this.faxFormControl.errors === null && this.incomePercentFormControl.errors === null && this.debitFormControl.errors === null){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

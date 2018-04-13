@@ -53,7 +53,7 @@ export class AddPartnerComponent implements OnInit {
         ]);
         this.userNameFormControl = new FormControl('', [
             Validators.required,
-            Validators.pattern(/^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/)
+            Validators.pattern(/^[a-zA-Z0-9_-]{5,40}$/),
         ]);
         this.phoneFormControl = new FormControl('', [
             Validators.required,
@@ -86,6 +86,7 @@ export class AddPartnerComponent implements OnInit {
             Validators.required,
         ]);
         this.matcher = this.errorStateMatcher;
+
     }
 
     addPartner() {
@@ -104,7 +105,13 @@ export class AddPartnerComponent implements OnInit {
             });
     }
 
-
+    disabled() {
+        if (this.emailFormControl.errors === null && this.userNameFormControl.errors === null && this.phoneFormControl.errors === null && this.companyNameFormControl.errors === null && this.stateFormControl.errors === null && this.cityFormControl.errors === null && this.addressFormControl.errors === null && this.zipCodeFormControl.errors === null && this.faxFormControl.errors === null && this.incomePercentFormControl.errors === null && this.debitFormControl.errors === null){
+            return true;
+        } else {
+            return false;
+        }
+    }
     onNoClick(): void {
         this.dialogRef.close();
     }
